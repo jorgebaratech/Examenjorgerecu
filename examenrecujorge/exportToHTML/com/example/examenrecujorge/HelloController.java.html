@@ -1,0 +1,258 @@
+<html>
+<head>
+<title>HelloController.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+HelloController.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">examenrecujorge</span><span class="s2">;</span>
+
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">examenrecujorge</span><span class="s2">.</span><span class="s1">model</span><span class="s2">.</span><span class="s1">Alumno</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">examenrecujorge</span><span class="s2">.</span><span class="s1">controller</span><span class="s2">.</span><span class="s1">JasperController</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">EventHandler</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">fxml</span><span class="s2">.</span><span class="s1">FXML</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">fxml</span><span class="s2">.</span><span class="s1">Initializable</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">scene</span><span class="s2">.</span><span class="s1">control</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">scene</span><span class="s2">.</span><span class="s1">control</span><span class="s2">.</span><span class="s1">cell</span><span class="s2">.</span><span class="s1">PropertyValueFactory</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">scene</span><span class="s2">.</span><span class="s1">input</span><span class="s2">.</span><span class="s1">MouseEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">sf</span><span class="s2">.</span><span class="s1">jasperreports</span><span class="s2">.</span><span class="s1">engine</span><span class="s2">.</span><span class="s1">JRException</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">net</span><span class="s2">.</span><span class="s1">URL</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">sql</span><span class="s2">.</span><span class="s1">SQLException</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">text</span><span class="s2">.</span><span class="s1">DecimalFormat</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">ArrayList</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">ResourceBundle</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">HelloController </span><span class="s0">implements </span><span class="s1">Initializable </span><span class="s2">{</span>
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">Button btnAddToTable</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">Button btnExit</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TableColumn</span><span class="s2">&lt;?, ?&gt; </span><span class="s1">colAD</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TableColumn</span><span class="s2">&lt;?, ?&gt; </span><span class="s1">colApellido</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TableColumn</span><span class="s2">&lt;?, ?&gt; </span><span class="s1">colDI</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TableColumn</span><span class="s2">&lt;?, ?&gt; </span><span class="s1">colEIE</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TableColumn</span><span class="s2">&lt;?, ?&gt; </span><span class="s1">colHLC</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TableColumn</span><span class="s2">&lt;?, ?&gt; </span><span class="s1">colID</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TableColumn</span><span class="s2">&lt;?, ?&gt; </span><span class="s1">colName</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TableColumn</span><span class="s2">&lt;?, ?&gt; </span><span class="s1">colPMDM</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TableColumn</span><span class="s2">&lt;?, ?&gt; </span><span class="s1">colPSP</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TableColumn</span><span class="s2">&lt;?, ?&gt; </span><span class="s1">colSGE</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TextField inputAD</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TextField inputDI</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TextField inputEIE</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TextField inputHCL</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TextField inputLastName</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TextField inputName</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TextField inputPMDM</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TextField inputPSP</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TextField inputSGE</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">TableView</span><span class="s2">&lt;</span><span class="s1">Alumno</span><span class="s2">&gt; </span><span class="s1">table</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Alumno</span><span class="s2">&gt; </span><span class="s1">alumnos</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">Button btnShowReport</span><span class="s2">;</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private </span><span class="s1">Button btnDownloadReport</span><span class="s2">;</span>
+
+    <span class="s1">@Override</span>
+
+    <span class="s0">public void </span><span class="s1">initialize</span><span class="s2">(</span><span class="s1">URL url</span><span class="s2">, </span><span class="s1">ResourceBundle resourceBundle</span><span class="s2">) {</span>
+        <span class="s1">alumnos </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
+        <span class="s1">inflateTable</span><span class="s2">();</span>
+        <span class="s1">updateTable</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private void </span><span class="s1">showReport</span><span class="s2">() {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">JasperController</span><span class="s2">.</span><span class="s1">showReport</span><span class="s2">();</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">JRException </span><span class="s2">| </span><span class="s1">ClassNotFoundException </span><span class="s2">| </span><span class="s1">SQLException e</span><span class="s2">) {</span>
+            <span class="s0">throw new </span><span class="s1">RuntimeException</span><span class="s2">(</span><span class="s1">e</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private void </span><span class="s1">downloadReport</span><span class="s2">() {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">JasperController</span><span class="s2">.</span><span class="s1">generateReport</span><span class="s2">();</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">JRException </span><span class="s2">| </span><span class="s1">ClassNotFoundException </span><span class="s2">| </span><span class="s1">SQLException e</span><span class="s2">) {</span>
+            <span class="s0">throw new </span><span class="s1">RuntimeException</span><span class="s2">(</span><span class="s1">e</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">void </span><span class="s1">addToTheTable</span><span class="s2">(</span><span class="s1">ActionEvent event</span><span class="s2">) {</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">inputAD</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">isEmpty</span><span class="s2">() || </span><span class="s1">inputDI</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">isEmpty</span><span class="s2">() || </span><span class="s1">inputEIE</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">isEmpty</span><span class="s2">() ||</span>
+                <span class="s1">inputHCL</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">isEmpty</span><span class="s2">() || </span><span class="s1">inputLastName</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">isEmpty</span><span class="s2">() || </span><span class="s1">inputName</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">isEmpty</span><span class="s2">() ||</span>
+                <span class="s1">inputPMDM</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">isEmpty</span><span class="s2">() || </span><span class="s1">inputPSP</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">isEmpty</span><span class="s2">() || </span><span class="s1">inputSGE</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">isEmpty</span><span class="s2">()) {</span>
+            <span class="s1">Alert fail </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Alert</span><span class="s2">(</span><span class="s1">Alert</span><span class="s2">.</span><span class="s1">AlertType</span><span class="s2">.</span><span class="s1">INFORMATION</span><span class="s2">);</span>
+            <span class="s1">fail</span><span class="s2">.</span><span class="s1">setHeaderText</span><span class="s2">(</span><span class="s3">&quot;ERROR&quot;</span><span class="s2">);</span>
+            <span class="s1">fail</span><span class="s2">.</span><span class="s1">setContentText</span><span class="s2">(</span><span class="s3">&quot;Faltan campos por rellenar&quot;</span><span class="s2">);</span>
+            <span class="s1">fail</span><span class="s2">.</span><span class="s1">showAndWait</span><span class="s2">();</span>
+            <span class="s0">return</span><span class="s2">;</span>
+
+        <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputAD</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) &gt; </span><span class="s4">10 </span><span class="s2">|| </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputDI</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) &gt; </span><span class="s4">10 </span><span class="s2">|| </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputEIE</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) &gt; </span><span class="s4">10 </span><span class="s2">||</span>
+                <span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputHCL</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) &gt; </span><span class="s4">10 </span><span class="s2">|| </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputPMDM</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) &gt; </span><span class="s4">10 </span><span class="s2">|| </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputPSP</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) &gt; </span><span class="s4">10 </span><span class="s2">|| </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputSGE</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) &gt; </span><span class="s4">10</span>
+                <span class="s2">|| </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputAD</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) &lt; </span><span class="s4">0 </span><span class="s2">|| </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputDI</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) &lt; </span><span class="s4">0 </span><span class="s2">|| </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputEIE</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) &lt; </span><span class="s4">0 </span><span class="s2">||</span>
+                <span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputHCL</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) &lt; </span><span class="s4">0 </span><span class="s2">|| </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputPMDM</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) &lt; </span><span class="s4">0 </span><span class="s2">|| </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputPSP</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) &lt; </span><span class="s4">0 </span><span class="s2">|| </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputSGE</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) &lt; </span><span class="s4">0</span><span class="s2">) {</span>
+            <span class="s1">Alert fail </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Alert</span><span class="s2">(</span><span class="s1">Alert</span><span class="s2">.</span><span class="s1">AlertType</span><span class="s2">.</span><span class="s1">INFORMATION</span><span class="s2">);</span>
+            <span class="s1">fail</span><span class="s2">.</span><span class="s1">setHeaderText</span><span class="s2">(</span><span class="s3">&quot;ERROR&quot;</span><span class="s2">);</span>
+            <span class="s1">fail</span><span class="s2">.</span><span class="s1">setContentText</span><span class="s2">(</span><span class="s3">&quot;Las notas no pueden estar por debajo de 0 ni por encima de 10&quot;</span><span class="s2">);</span>
+            <span class="s1">fail</span><span class="s2">.</span><span class="s1">showAndWait</span><span class="s2">();</span>
+            <span class="s0">return</span><span class="s2">;</span>
+        <span class="s2">}</span>
+
+        <span class="s1">Alumno alumno </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Alumno</span><span class="s2">(</span>
+                <span class="s1">inputName</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">(),</span>
+                <span class="s1">inputLastName</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">(),</span>
+                <span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputAD</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()),</span>
+                <span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputSGE</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()),</span>
+                <span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputDI</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()),</span>
+                <span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputPMDM</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()),</span>
+                <span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputEIE</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()),</span>
+                <span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputPSP</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()),</span>
+                <span class="s1">Double</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">inputHCL</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">())</span>
+        <span class="s2">);</span>
+
+        <span class="s1">alumnos</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">alumno</span><span class="s2">);</span>
+        <span class="s1">updateTable</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+
+    <span class="s0">private void </span><span class="s1">inflateTable</span><span class="s2">() {</span>
+        <span class="s1">table</span><span class="s2">.</span><span class="s1">setColumnResizePolicy</span><span class="s2">(</span><span class="s1">TableView</span><span class="s2">.</span><span class="s1">CONSTRAINED_RESIZE_POLICY</span><span class="s2">);</span>
+        <span class="s1">colID</span><span class="s2">.</span><span class="s1">setCellValueFactory</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PropertyValueFactory</span><span class="s2">(</span><span class="s3">&quot;id&quot;</span><span class="s2">));</span>
+        <span class="s1">colName</span><span class="s2">.</span><span class="s1">setCellValueFactory</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PropertyValueFactory</span><span class="s2">(</span><span class="s3">&quot;name&quot;</span><span class="s2">));</span>
+        <span class="s1">colApellido</span><span class="s2">.</span><span class="s1">setCellValueFactory</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PropertyValueFactory</span><span class="s2">(</span><span class="s3">&quot;lastName&quot;</span><span class="s2">));</span>
+        <span class="s1">colAD</span><span class="s2">.</span><span class="s1">setCellValueFactory</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PropertyValueFactory</span><span class="s2">(</span><span class="s3">&quot;AD&quot;</span><span class="s2">));</span>
+        <span class="s1">colSGE</span><span class="s2">.</span><span class="s1">setCellValueFactory</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PropertyValueFactory</span><span class="s2">(</span><span class="s3">&quot;SGE&quot;</span><span class="s2">));</span>
+        <span class="s1">colDI</span><span class="s2">.</span><span class="s1">setCellValueFactory</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PropertyValueFactory</span><span class="s2">(</span><span class="s3">&quot;DI&quot;</span><span class="s2">));</span>
+        <span class="s1">colPMDM</span><span class="s2">.</span><span class="s1">setCellValueFactory</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PropertyValueFactory</span><span class="s2">(</span><span class="s3">&quot;PMDM&quot;</span><span class="s2">));</span>
+        <span class="s1">colPSP</span><span class="s2">.</span><span class="s1">setCellValueFactory</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PropertyValueFactory</span><span class="s2">(</span><span class="s3">&quot;PSP&quot;</span><span class="s2">));</span>
+        <span class="s1">colEIE</span><span class="s2">.</span><span class="s1">setCellValueFactory</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PropertyValueFactory</span><span class="s2">(</span><span class="s3">&quot;EIE&quot;</span><span class="s2">));</span>
+        <span class="s1">colHLC</span><span class="s2">.</span><span class="s1">setCellValueFactory</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PropertyValueFactory</span><span class="s2">(</span><span class="s3">&quot;HLC&quot;</span><span class="s2">));</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@FXML</span>
+    <span class="s0">public void </span><span class="s1">onClickTable</span><span class="s2">(</span><span class="s1">MouseEvent event</span><span class="s2">) {</span>
+        <span class="s1">table</span><span class="s2">.</span><span class="s1">setOnMouseClicked</span><span class="s2">(</span><span class="s0">new </span><span class="s1">EventHandler</span><span class="s2">&lt;</span><span class="s1">MouseEvent</span><span class="s2">&gt;() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">handle</span><span class="s2">(</span><span class="s1">MouseEvent event</span><span class="s2">) {</span>
+                <span class="s1">Alumno alumno </span><span class="s2">= </span><span class="s1">table</span><span class="s2">.</span><span class="s1">getSelectionModel</span><span class="s2">().</span><span class="s1">getSelectedItem</span><span class="s2">();</span>
+                <span class="s1">String text </span><span class="s2">= </span><span class="s3">&quot;&quot;</span><span class="s2">;</span>
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getAD</span><span class="s2">() &gt;= </span><span class="s4">5 </span><span class="s2">&amp;&amp; </span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getSGE</span><span class="s2">() &gt;= </span><span class="s4">5 </span><span class="s2">&amp;&amp; </span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getDI</span><span class="s2">() &gt;= </span><span class="s4">5 </span><span class="s2">&amp;&amp; </span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getPMDM</span><span class="s2">() &gt;= </span><span class="s4">5</span>
+                        <span class="s2">&amp;&amp; </span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getPSP</span><span class="s2">() &gt;= </span><span class="s4">5 </span><span class="s2">&amp;&amp; </span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getEIE</span><span class="s2">() &gt;= </span><span class="s4">5 </span><span class="s2">&amp;&amp; </span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getHLC</span><span class="s2">() &gt;= </span><span class="s4">5</span><span class="s2">) {</span>
+
+                    <span class="s1">Double averagePoints </span><span class="s2">= (</span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getAD</span><span class="s2">() + </span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getSGE</span><span class="s2">() + </span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getDI</span><span class="s2">()</span>
+                            <span class="s2">+ </span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getPMDM</span><span class="s2">() + </span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getPSP</span><span class="s2">() + </span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getEIE</span><span class="s2">() + </span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getHLC</span><span class="s2">()) / </span><span class="s4">7</span><span class="s2">;</span>
+
+                    <span class="s1">DecimalFormat decimalFormat </span><span class="s2">= </span><span class="s0">new </span><span class="s1">DecimalFormat</span><span class="s2">(</span><span class="s3">&quot;##.00&quot;</span><span class="s2">);</span>
+                    <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;La media de todos los módulos es: &quot; </span><span class="s2">+ </span><span class="s1">decimalFormat</span><span class="s2">.</span><span class="s1">format</span><span class="s2">(</span><span class="s1">averagePoints</span><span class="s2">);</span>
+                <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+                    <span class="s0">int </span><span class="s1">numberOfFailedSubjects </span><span class="s2">= </span><span class="s4">0</span><span class="s2">;</span>
+                    <span class="s0">if </span><span class="s2">(</span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getAD</span><span class="s2">() &lt; </span><span class="s4">5</span><span class="s2">) {</span>
+                        <span class="s1">numberOfFailedSubjects</span><span class="s2">++;</span>
+                    <span class="s2">}</span>
+                    <span class="s0">if </span><span class="s2">(</span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getSGE</span><span class="s2">() &lt; </span><span class="s4">5</span><span class="s2">) {</span>
+                        <span class="s1">numberOfFailedSubjects</span><span class="s2">++;</span>
+                    <span class="s2">}</span>
+                    <span class="s0">if </span><span class="s2">(</span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getDI</span><span class="s2">() &lt; </span><span class="s4">5</span><span class="s2">) {</span>
+                        <span class="s1">numberOfFailedSubjects</span><span class="s2">++;</span>
+                    <span class="s2">}</span>
+                    <span class="s0">if </span><span class="s2">(</span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getPMDM</span><span class="s2">() &lt; </span><span class="s4">5</span><span class="s2">) {</span>
+                        <span class="s1">numberOfFailedSubjects</span><span class="s2">++;</span>
+                    <span class="s2">}</span>
+                    <span class="s0">if </span><span class="s2">(</span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getPSP</span><span class="s2">() &lt; </span><span class="s4">5</span><span class="s2">) {</span>
+                        <span class="s1">numberOfFailedSubjects</span><span class="s2">++;</span>
+                    <span class="s2">}</span>
+                    <span class="s0">if </span><span class="s2">(</span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getEIE</span><span class="s2">() &lt; </span><span class="s4">5</span><span class="s2">) {</span>
+                        <span class="s1">numberOfFailedSubjects</span><span class="s2">++;</span>
+                    <span class="s2">}</span>
+                    <span class="s0">if </span><span class="s2">(</span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getHLC</span><span class="s2">() &lt; </span><span class="s4">5</span><span class="s2">) {</span>
+                        <span class="s1">numberOfFailedSubjects</span><span class="s2">++;</span>
+                    <span class="s2">}</span>
+                    <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;El número de módulos suspensos es: &quot; </span><span class="s2">+ </span><span class="s1">numberOfFailedSubjects</span><span class="s2">;</span>
+                <span class="s2">}</span>
+
+                <span class="s1">Alert alert </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Alert</span><span class="s2">(</span><span class="s1">Alert</span><span class="s2">.</span><span class="s1">AlertType</span><span class="s2">.</span><span class="s1">INFORMATION</span><span class="s2">);</span>
+                <span class="s1">alert</span><span class="s2">.</span><span class="s1">setTitle</span><span class="s2">(</span><span class="s3">&quot;Información del Alumno&quot;</span><span class="s2">);</span>
+                <span class="s1">alert</span><span class="s2">.</span><span class="s1">setHeaderText</span><span class="s2">(</span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getName</span><span class="s2">() + </span><span class="s3">&quot; &quot; </span><span class="s2">+ </span><span class="s1">alumno</span><span class="s2">.</span><span class="s1">getLastName</span><span class="s2">());</span>
+                <span class="s1">alert</span><span class="s2">.</span><span class="s1">setContentText</span><span class="s2">(</span><span class="s1">text</span><span class="s2">);</span>
+                <span class="s1">alert</span><span class="s2">.</span><span class="s1">showAndWait</span><span class="s2">();</span>
+            <span class="s2">}</span>
+        <span class="s2">});</span>
+    <span class="s2">}</span>
+
+    <span class="s0">private void </span><span class="s1">updateTable</span><span class="s2">() {</span>
+        <span class="s1">table</span><span class="s2">.</span><span class="s1">getItems</span><span class="s2">().</span><span class="s1">clear</span><span class="s2">();</span>
+        <span class="s1">table</span><span class="s2">.</span><span class="s1">getItems</span><span class="s2">().</span><span class="s1">addAll</span><span class="s2">(</span><span class="s1">alumnos</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+
+
+    <span class="s1">@FXML</span>
+    <span class="s0">private void </span><span class="s1">salir</span><span class="s2">() {</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">exit</span><span class="s2">(</span><span class="s4">0</span><span class="s2">);</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>

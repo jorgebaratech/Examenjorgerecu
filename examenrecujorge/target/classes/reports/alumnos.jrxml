@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="alumnos" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3f7fe852-407f-4461-8a51-823ab4cf6877">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<leftPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<rightPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#1995AD">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<leftPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<rightPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#BCBABE">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<leftPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<rightPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#A1D6E2"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="alumnoData" uuid="01994bd8-a8c5-4576-ad8c-6df8956f7f7f">
+		<property name="com.jaspersoft.studio.data.sql.tables" value="YWx1bW5vICwxNSwxNSw0Y2EyODA3NC0wYWYyLTRmMmUtYTE5Ni1lZDEwMmQ4NTQ5NWE7"/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="deiex"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT *, ROUND((AD + SGE + DI + PMDM + PSP + EIE + HLC) / 7, 2) as Media
+FROM alumno]]>
+		</queryString>
+		<field name="id" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id"/>
+			<property name="com.jaspersoft.studio.field.label" value="id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="alumno"/>
+		</field>
+		<field name="nombre" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="alumno"/>
+		</field>
+		<field name="apellido" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="apellido"/>
+			<property name="com.jaspersoft.studio.field.label" value="apellido"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="alumno"/>
+		</field>
+		<field name="AD" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="AD"/>
+			<property name="com.jaspersoft.studio.field.label" value="AD"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="alumno"/>
+		</field>
+		<field name="SGE" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="SGE"/>
+			<property name="com.jaspersoft.studio.field.label" value="SGE"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="alumno"/>
+		</field>
+		<field name="DI" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="DI"/>
+			<property name="com.jaspersoft.studio.field.label" value="DI"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="alumno"/>
+		</field>
+		<field name="PMDM" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="PMDM"/>
+			<property name="com.jaspersoft.studio.field.label" value="PMDM"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="alumno"/>
+		</field>
+		<field name="PSP" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="PSP"/>
+			<property name="com.jaspersoft.studio.field.label" value="PSP"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="alumno"/>
+		</field>
+		<field name="EIE" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="EIE"/>
+			<property name="com.jaspersoft.studio.field.label" value="EIE"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="alumno"/>
+		</field>
+		<field name="HLC" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="HLC"/>
+			<property name="com.jaspersoft.studio.field.label" value="HLC"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="alumno"/>
+		</field>
+		<field name="Media" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="Media"/>
+			<property name="com.jaspersoft.studio.field.label" value="Media"/>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT *, ROUND((AD + SGE + DI + PMDM + PSP + EIE + HLC) / 7, 2) as Media
+FROM alumno]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="110" y="20" width="330" height="30" uuid="ed53c018-25f4-4a72-bbd5-9f3d92e2f4ff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Rounded MT Bold" size="16"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE ALUMNOS CESUR]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="277" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="10" width="561" height="240" uuid="f5bd6a11-5d17-41cb-8416-88136e344b15">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="alumnoData" uuid="8b47e6e6-d00c-47db-bbb7-8f280875c4b8">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="30" uuid="da918f64-f144-4216-bd41-e66f3fc979ea">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="b20d707d-6f5e-4bb0-a3e4-51aae71789fb"/>
+								<text><![CDATA[id]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="086ca818-a7ab-4c1c-89bd-a061bf2ec8e6"/>
+								<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="110" uuid="aa3cbedb-1bce-4936-b2f3-c48d694e59e2">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="110" height="30" uuid="12f0ad05-90fa-46ac-bf8f-69df042f04a5"/>
+								<text><![CDATA[nombre]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="110" height="30" uuid="3708cf77-79f9-40d8-a573-4af0a6b4c819"/>
+								<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="120" uuid="7bab68fa-de6d-4137-a276-9646355bc0b8">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="120" height="30" uuid="b5e1b9ae-bb41-4103-aad9-1f1f96138577"/>
+								<text><![CDATA[apellido]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="120" height="30" uuid="6802381e-f51f-4a8f-bef1-7724016ec438"/>
+								<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="36" uuid="b90371dd-f8b4-4da8-a563-2457101167c0">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="36" height="30" uuid="3c2509e2-18db-498c-afd2-ba1acb90d6e6"/>
+								<text><![CDATA[AD]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="36" height="30" uuid="a1002fa7-d8ef-448f-9561-b4f5eb1d3f4f"/>
+								<textFieldExpression><![CDATA[$F{AD}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="36" uuid="5c340f9a-a5d9-4f6d-b98f-d32df71f4471">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="36" height="30" uuid="d4169c6a-8189-4244-bfdb-2d264c9809fd"/>
+								<text><![CDATA[SGE]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="36" height="30" uuid="976a1500-7438-4d5e-a0e4-dc1fa35279ff"/>
+								<textFieldExpression><![CDATA[$F{SGE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="36" uuid="f2bdc105-f908-4259-bad7-38b8faa235da">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="36" height="30" uuid="ebcdfc36-42e3-4746-ae10-4239bdf2c10a"/>
+								<text><![CDATA[DI]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="36" height="30" uuid="b685de63-252e-4fca-8e9d-7b3d6f584919"/>
+								<textFieldExpression><![CDATA[$F{DI}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="36" uuid="e63bee7d-e3e9-476c-98e6-3879e6a31c25">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="36" height="30" uuid="9db94268-1360-4495-9388-50f48715d0c1"/>
+								<text><![CDATA[PMDM]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="36" height="30" uuid="ac04ff2f-69a8-467b-a199-f972e89d2d41"/>
+								<textFieldExpression><![CDATA[$F{PMDM}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="36" uuid="b91d52e8-560f-4163-baf1-1a778cd1bf0f">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="36" height="30" uuid="2df17b61-4db0-4ba2-bd78-29572ded02a0"/>
+								<text><![CDATA[PSP]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="36" height="30" uuid="d7ba9546-46b6-45ae-9a85-22b4e99fee58"/>
+								<textFieldExpression><![CDATA[$F{PSP}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="36" uuid="3d95efc9-dc62-4b00-840b-563c9090444f">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="36" height="30" uuid="42b8c891-fee2-4501-b6fc-427a43bae197"/>
+								<text><![CDATA[EIE]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="36" height="30" uuid="be5cb382-5495-493c-b4bb-f83a6463e92c"/>
+								<textFieldExpression><![CDATA[$F{EIE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="36" uuid="11de0cc8-61cb-4087-950b-98a33cd14562">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="36" height="30" uuid="bad85f7d-65a2-4e4b-984c-6d672058e492"/>
+								<text><![CDATA[HLC]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="36" height="30" uuid="1cc44496-2615-4e54-acd5-514c7f117aca"/>
+								<textFieldExpression><![CDATA[$F{HLC}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="48" uuid="d8f55c5c-965c-424b-8b29-2846fdf5172e">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="48" height="30" uuid="ecbfc662-5750-4145-9e31-22828b0eef76"/>
+								<text><![CDATA[Media]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="48" height="30" uuid="f1445055-d35f-41d5-968b-48db0c606ab2"/>
+								<textFieldExpression><![CDATA[$F{Media}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="6" width="120" height="30" uuid="782a6908-9cbe-4a1e-9e4f-f1dab629e57b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[DIE - EXAMEN - 2DAM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="6" width="120" height="30" uuid="f0145149-3d66-4b56-8856-da18076d5066"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Reporte realizado por Miguel Muñoz Jimenez]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
